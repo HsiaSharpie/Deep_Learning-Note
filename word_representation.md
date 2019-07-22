@@ -13,11 +13,19 @@ Goal of Meaning Representation:
 2. Corpus-based representation
 
 ------------------------------------------------------------------------------
-```bash
 (1)Knowledge-based representation:
+```bash
 此方法必須大量依賴語言學家，由他們人工定義詞意，建構出字與字之間的關係。
 ```
 類似於字典，語言學家建構出詞庫，並把同義詞或相似詞放入同一個群組，例如：car 與 automobile。在將字詞分群後，語言學家也會定義出字詞間的「上下層」關係，以建構字詞間的關聯性。
 <br>motocar 位於 motor vehicle 的下層，則 motocar is a motor vehicle，此關係稱為 Hypernyms(is-a) relationship。
 
 而現在最有名的詞庫是`WordNet`，它是由普林士頓大學從1985年就開始研發的詞庫，在 Python 中可以直接從 NLTK 取得 WordNet 的資源。
+
+但其實使用 Knowledge-based representation 有許多限制：
+* Newly-invented words -> 更新不頻繁，缺少許多新字
+* Subjective -> 過於主觀
+* Annotation effort -> 對字詞進行標注 knowledge resource 相當辛苦，且成本昂貴
+* Difficult to compute word similarity -> 僅能從由上下層關係得知相對關係，但難以將之進行量化
+
+與其純粹依賴於語言學家，後來衍伸出 Corpus-Based Representation，我們可直接由資料去 learn 出字詞間的關係。
