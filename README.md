@@ -5,4 +5,4 @@
 <br>(1) LeNet: [Keras](https://github.com/HsiaSharpie/Deep_Learning-Practice/tree/master/LeNet_Keras), [Pytorch](https://github.com/HsiaSharpie/Deep_Learning-Practice/tree/master/LeNet_Pytorch)
 
 2. NLP:
-<br>(1) Word Representation Note: [Knowledge-Based Representation](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word_representation.md), [Corpus-Based Representation]()
+<br>(1) Word Representation Note: [Knowledge-Based Representation](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/knowledge-based%20representation.md), [Corpus-Based Representation](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/corpus-based%20representation.md)
