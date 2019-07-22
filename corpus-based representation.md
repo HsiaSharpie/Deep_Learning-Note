@@ -175,4 +175,28 @@ array([[0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
 <br>故第一列即為代表`he`的 vector，其餘以此類推。
 
 建構完 Co-occurence matrix後，就可以計算各個 vector 間的相似度啦！
-<br> 這邊要用的是前面所提到的 Cosine similarity，定義就直接看 Wiki 即可 -> https://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7
+<br> 這邊要用的是前面所提到的 Cosine similarity。
+<br> 定義就直接看 Wiki 即可 -> https://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7
+
+以下是 Cosine similarity，並計算'he'跟'is'兩個字詞相似度:
+```python
+def cos_similarity(vector1, vector2, eps=1e-8):
+  dx = x / (np.sqrt(np.sum(x**2)) + eps)
+  dy = y / (np.sqrt(np.sum(y**2)) + eps)
+
+  return np.dot(dx, dy)
+```
+
+```bash
+>>> he_vec = co_matrix[token_to_id['he']]
+>>> is_vec = co_matrix[token_to_id['is']]
+
+>>> cos_similarity(he_vec, is_vec)
+
+0.0
+```
+相較 one-hot encoding，此方法考量了 word 間的 neighbors。
+<br> 但他仍有許多問題：
+1. Matrix size increase with vocabulary -> 隨著字詞增加，要不斷修改矩陣(矩陣不斷增大)。
+2. High Dimension -> 一個字詞就要作為一個 vector，其維度與 one-hot encoding 一樣很高。
+3. Sparsity -> 矩陣中有很多 element 為 0，故以此為架構建構出之結果較不 robust。
