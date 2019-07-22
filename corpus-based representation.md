@@ -96,6 +96,8 @@ def token_to_id(vocab):
  'crowded': 10}
  ```
  好了，終於要針對我們 Corpus 中的 unique 單字建構 one-hot encoding。
+ <br> One-hot encoding: 在此我是利用 dictionary 中的 value，將它對應回 vector 之 index，並設定為1，以代表表示此單字。
+
  ```python
  import numpy as np
 
@@ -114,3 +116,12 @@ def one_hot(word_dict, word):
 
  array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
   ```
+
+以上為單字`he`的 one-hot encoding，其他字可以此類推。
+<br>但使用 one-hot encoding 有個致命的缺點 : 難以計算字詞間的相似度(similarity)。
+
+```bash
+在此，我們假設字詞間為 independent(vector 為 orthogonal -> cosine similarity必為0)。
+ ```
+
+ 
