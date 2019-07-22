@@ -11,3 +11,10 @@ Goal of Meaning Representation:
 而 Meaning Representation 主要可以分為：
 1. Knowledge-based representation
 2. Corpus-based representation
+
+------------------------------------------------------------------------------
+```bash
+Knowledge-based representation:
+此方法必須大量依賴語言學家，由他們人工定義詞意，建構出字與字之間的關係。
+```
+類似於字典，他們建構出詞庫。他們把同義詞或相似詞放入同一個群組，例如：car 與 automobile。
