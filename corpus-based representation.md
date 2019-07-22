@@ -171,3 +171,8 @@ array([[0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
        [0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
        [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.]])
  ```
+上方為根據 Corpus 所建構出之 Co-occurence matrix，而每一 row/column 所對應的字詞，即為在 token_to_id dictionary 之 value 所對應的 key。
+<br>故第一列即為代表`he`的 vector，其餘以此類推。
+
+建構完 Co-occurence matrix後，就可以計算各個 vector 間的相似度啦！
+<br> 這邊要用的是前面所提到的 Cosine similarity，定義就直接看 Wiki 即可 -> https://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7
