@@ -5,7 +5,9 @@ Review:
    ├── 2-(1) dimension reduction
    ├── 2-(2) directly learn low-dimension word vectors
 ```
+
 在前一篇 Atomic-symbols 及他遇到的困難及解決方式，而此篇主要討論 Low dimension dense word vector。
+
 ------------------------------------------------------------------------------
 2-(1) Dimension reduction
 <br>降維的方法有很多種(例:PCA、SVD、tsne等等...)，而此處要討論的是利用SVD，將前一篇所建構的 Co-occurence matrix 進行維度縮減。
