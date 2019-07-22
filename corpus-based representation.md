@@ -80,18 +80,37 @@ def token_to_id(vocab):
     return {word:index for index, word in enumerate(vocab)}
 ```
 ```bash
->>> id_to_token = id_to_token(uni_vocab)
->>> id_to_token
+>>> token_to_id = token_to_id(uni_vocab)
+>>> token_to_id
 
-{0: 'he',
- 1: 'is',
- 2: 'a',
- 3: 'man',
- 4: 'she',
- 5: 'woman',
- 6: 'Taipei',
- 7: 'beautiful',
- 8: 'city',
- 9: 'Tokyo',
- 10: 'crowded'}
+{'he': 0,
+ 'is': 1,
+ 'a': 2,
+ 'man': 3,
+ 'she': 4,
+ 'woman': 5,
+ 'Taipei': 6,
+ 'beautiful': 7,
+ 'city': 8,
+ 'Tokyo': 9,
+ 'crowded': 10}
  ```
+ 好了，終於要針對我們 Corpus 中的 unique 單字建構 one-hot encoding。
+ ```python
+ import numpy as np
+
+def one_hot(word_dict, word):
+    one_hot_vector = np.zeros(len(word_dict))
+
+    if word in word_dict:
+        value = word_dict[word]
+        one_hot_vector[value] = 1
+
+    return one_hot_vector
+ ```
+
+ ```bash
+ >>> one_hot(a, 'he')
+
+ array([1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
+  ```
