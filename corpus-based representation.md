@@ -121,7 +121,11 @@ def one_hot(word_dict, word):
 <br>但使用 one-hot encoding 有個致命的缺點 : 難以計算字詞間的相似度(similarity)。
 
 ```bash
-在此，我們假設字詞間為 independent(vector 為 orthogonal -> cosine similarity必為0)。
+在此，我們假設字詞間為 independent(vector 為 orthogonal)，故任何兩個字詞之 vector 所算出之 cosine similarity 必為0。
  ```
-
- 
+為了解決這個問題，考慮了 distribution hypothesis，他的基本想法是「字詞的詞意是由周圍字詞所形成」。
+<br>說白了 one-hot encoding 只讓我們能有效辨識此向量在表達和字詞，但沒辦法表達詞意。
+```bash
+Goal:
+我們由 distribution hypothesis 出發，透過計算周圍的字詞，建構 Co-occurence matrix。
+ ```
