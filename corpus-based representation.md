@@ -71,3 +71,27 @@ def unique_vocabulary(tokenized_corpus):
  'Tokyo',
  'crowded']
  ```
+字詞處理上，除了簡單以陣列存放字詞，若將字詞設定ID且與字詞形成一對一對應表，再後續有許多使用方便之處(Ex:建構 one-hot encoding...)。
+```python
+def id_to_token(vocab):
+    return {index:word for index, word in enumerate(vocab)}
+
+def token_to_id(vocab):
+    return {word:index for index, word in enumerate(vocab)}
+```
+```bash
+>>> id_to_token = id_to_token(uni_vocab)
+>>> id_to_token
+
+{0: 'he',
+ 1: 'is',
+ 2: 'a',
+ 3: 'man',
+ 4: 'she',
+ 5: 'woman',
+ 6: 'Taipei',
+ 7: 'beautiful',
+ 8: 'city',
+ 9: 'Tokyo',
+ 10: 'crowded'}
+ ```
