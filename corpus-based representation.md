@@ -15,6 +15,7 @@ Corpus 中儲存的文章為由人類撰寫而成，故在其中涵蓋大量自�
 (1) Atomic-symbols : one-hot represnetation
 
 此方法就是有名的 one-hot encoding，將一個字詞以一個非常高維度的 vector 表示，而此 vector 之維度即為len(corpus)。
+
 Example:
 <br>假設我們有下面幾個句子，而我們把它丟入陣列作為元素:
 ```bash
@@ -24,4 +25,17 @@ corpus = [
     'Taipei is a beautiful city',
     'Tokyo is a crowded city',
 ]
+```
+接著，寫一個簡單的 function，我們能輕易的把字詞透過 split 斷開(但在中文，斷詞就顯得不是那麼簡單了。現在中文斷詞最好的 library 為 jieba，它是透過HMM技巧有效將中文字詞斷開)。
+
+```python
+def tokenize_corpus(corpus):
+    return [sentence.split() for sentence in corpus]
+```
+就會有以下結果：
+```bash
+[['he', 'is', 'a', 'man'],
+ ['she', 'is', 'a', 'woman'],
+ ['Taipei', 'is', 'a', 'beautiful', 'city'],
+ ['Tokyo', 'is', 'a', 'crowded', 'city']]
 ```
