@@ -199,4 +199,4 @@ def cos_similarity(vector1, vector2, eps=1e-8):
 <br> 但他仍有許多問題：
 1. Matrix size increase with vocabulary -> 隨著字詞增加，要不斷修改矩陣(矩陣不斷增大)。
 2. High Dimension -> 一個字詞就要作為一個 vector，其維度與 one-hot encoding 一樣很高。
-3. Sparsity -> 矩陣中有很多 element 為 0，故以此為架構建構出之結果較不 robust。
+3. Sparsity -> 矩陣中有很多 element 為 0，容易受許多雜訊影響，故以此為架構建構出之結果較不 robust。
