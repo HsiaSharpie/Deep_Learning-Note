@@ -3,7 +3,7 @@ Review:
 1. Atomic-symbols : one-hot represnetation -> High dimension
 2. Low dimension dense word vector
    ├── 2-(1) dimension reduction
-   ├── 2-(2) directly learn low-dimension word vectors
+   ├── 2-(2) directly learn low-dimension word vectors -> word embedding
 ```
 
 在前一篇 Atomic-symbols 及他遇到的困難及解決方式，而此篇主要討論 Low dimension dense word vector。
@@ -49,5 +49,7 @@ U, S, V = np.linalg.svd(co_matrix)
 * Computationally expensive -> 複雜度偏高
 * Difficult to add new words -> 新增字詞後，必須重新建構矩陣，並再作一次SVD拆解。
 
-因此，後續陸續有 word-embedding、word2vec 等直接透過對資料學習方式所呈現的 low-dimensional word vectors(2-(2))。
-<br>2-(2)directly learn low-dimension word vectors 留由後續其他篇紀錄。
+因此，後續陸續有 word-embedding 這種直接透過對資料學習方式所呈現的low-dimensional word vectors(2-(2))。
+
+-----------------------------------------------------------------------------
+2-(2) word embedding 留由後續其他篇紀錄。

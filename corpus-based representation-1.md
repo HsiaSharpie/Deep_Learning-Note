@@ -9,7 +9,7 @@ Corpus 中儲存的文章為由人類撰寫而成，故在其中涵蓋大量自�
 1. Atomic-symbols : one-hot represnetation -> High dimension
 2. Low dimension dense word vector
    ├── 2-(1) dimension reduction
-   ├── 2-(2) directly learn low-dimension word vectors
+   ├── 2-(2) directly learning low-dimension word vectors -> word embedding
 ```
 ------------------------------------------------------------------------------
 (1) Atomic-symbols : one-hot represnetation
