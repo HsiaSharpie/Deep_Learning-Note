@@ -2,7 +2,7 @@
 ```bash
 Corpus(語料庫)其實就是大量的文本資料。
 ```
-Corpus 中儲存的文章為由人類撰寫而成，故在其中涵蓋大量自然語言的常識 & 知識。故我們可從 Corpus 中透過 learning 萃取出精華。
+Corpus 中之文章為由人類撰寫而成，故在其中涵蓋大量自然語言的常識 & 知識。故我們可從 Corpus 中透過 learning 萃取出精華。
 
 而在 Corpus-based representation 中，主要分為兩大類：
 ```
@@ -28,7 +28,7 @@ corpus = [
 ```
 接著，寫一個簡單的 function，我們能輕易的把字詞透過 split 斷開。在這有兩個小補充：
 * 因為此為非常簡短的直述句，斷詞顯得很簡單。但一般在 Corpus 中，我們必須配合 regular expression 才能表現得更佳。
-* 在中文，斷詞就顯得不是那麼簡單了。現在中文斷詞最好的 library 為 jieba，它是透過HMM技巧有效將中文字詞斷開。
+* 在中文，斷詞就顯得不是那麼簡單了。現在中文斷詞最好的 library 為 jieba，它是透過HMM有效將中文字詞斷開。
 
 ```python
 def tokenize_corpus(corpus):
@@ -96,7 +96,7 @@ def token_to_id(vocab):
  'crowded': 10}
  ```
  好了，終於要針對我們 Corpus 中的 unique 單字建構 one-hot encoding。
- <br> One-hot encoding: 在此我是利用 dictionary 中的 value，將它對應回 vector 之 index，並設定為1，以代表表示此單字。
+ <br> One-hot encoding: 在此我是利用dictionary中的value，將它對應回vector之index，並設定為1，以代表表示此單字。
 
  ```python
  import numpy as np
@@ -123,7 +123,7 @@ def one_hot(word_dict, word):
 ```bash
 我們假設字詞間為 independent(vector為orthogonal)，故任何兩個字詞之 vector 所算出之 cosine similarity 必為0。
  ```
-說白了 one-hot encoding 只讓我們能有效辨識此向量在表達和字詞，但沒辦法表達詞意。
+說白了 one-hot encoding 只讓我們能有效辨識此向量在表達的字詞，但沒辦法表達詞意。
 <br>為了解決這個問題，考慮了 distribution hypothesis，他的基本想法是「字詞的詞意是由周圍字詞所形成」。
 
 ```bash
@@ -172,13 +172,13 @@ array([[0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
        [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.]])
  ```
 上方為根據 Corpus 所建構出之 Co-occurence matrix，而每一 row/column 所對應的字詞，即為在 token_to_id dictionary 之 value 所對應的 key。
-<br>故第一列即為代表`he`的 vector，其餘以此類推。
+<br>故第一列即為代表`'he'`的 vector，其餘以此類推。
 
 建構完 Co-occurence matrix後，就可以計算各個 vector 間的相似度啦！
 <br> 這邊要用的是前面所提到的 Cosine similarity。
-<br> 定義就直接看 Wiki 即可 -> https://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7
+<br> 定義直接看 Wiki 即可 -> https://zh.wikipedia.org/wiki/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7
 
-以下是 Cosine similarity，並計算'he'跟'is'兩個字詞相似度:
+以下是 Cosine similarity，並計算`'he'`跟`'is'`兩個字詞相似度:
 ```python
 def cos_similarity(vector1, vector2, eps=1e-8):
   dx = x / (np.sqrt(np.sum(x**2)) + eps)
