@@ -34,8 +34,7 @@ Word Embedding 之使用主要可分為：
 此種方法是根據你當初建構 Network 時為了解決的問題(ex: Sentimental Analysis, Seq2Seq...)去學習參數，在深度學習框架中，都提供很方便的 API 可以幫我們完成 word embedding。
 
 ```bash
-假設我們現在想表達一個簡短的句子:"I love deep learning"
-且假設在 Corpus 中，共有100個相異的單字。
+假設我們現在想表達一個簡短的句子:"I love deep learning"，且假設在 Corpus 中，共有100個相異的單字。
 故我們可以建構一個簡單的 word_to_index dictionary。
 大略可表示成：
 {
@@ -48,19 +47,37 @@ Word Embedding 之使用主要可分為：
 接著，我們可將各個字由 index 藉由 word embedding weight matrix 進行轉換。
 ```
 這邊示範一下在 Keras、Pytorch 下使用 word embedding：
-<br>In Keras:
+
+In Keras:
 ```python
 >>> import numpy as np
 >>> from keras.models import Sequential
 >>> from keras.layers import Embedding
 
->>> input_array = np.array([1, 3, 5, 9])
+>>> input_array = np.array([[1, 3, 5, 9]])
 >>> model = Sequential() # Build the model
 >>> model.add(Embedding(input_dim=100, output_dim=5)) # Add the Embedding layer
 >>> model.predict(input_array)
 
-array([[[-0.04232415,  0.04877395]],
-       [[-0.04796009,  0.04976574]],
-       [[ 0.04478942,  0.00876119]],
-       [[ 0.01540852, -0.03079422]]], dtype=float32)
+array([[[ 0.00102774, -0.00858252, -0.01779232,  0.01967026, -0.0355065]],
+       [[-0.03129957, -0.02744168, -0.03758506, -0.02883364, 0.03076198]],
+       [[ 0.02777207,  0.04753191, -0.01752094,  0.00322759, 0.04345156]],
+       [[ 0.00882687,  0.04097025, -0.04970786, -0.03205182, 0.03969387]]], dtype=float32)
+```
+
+```bash
+Arguments:
+(1)input_dim: 此為 Corpus 中單字的數量，即為 vocab_size。
+(2)output_dim: 此為你設定的 embedding dimension，即你想用幾維度去有效表達 word。
+
+由此例，因我們的Corpus共有100個相異單字，故設定input_dim = 100。
+Note:
+這邊要特別注意，作為 model 輸入的input index值是不可小於input_dim的。
+
+查看模型結果:
+output size == (1, 4, 5)
+分別的意義：
+1 -> 共有一個row(我們只有一句話'I love deep learning')
+2 -> 一個row中，透過embedding weights 轉換的字數(len([1, 3, 5, 9] -> 4))
+3 -> 5即為 embedding dimension
 ```
