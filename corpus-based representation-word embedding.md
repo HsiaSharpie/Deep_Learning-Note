@@ -35,9 +35,9 @@ Word Embedding 之使用主要可分為：
 <br>這邊示範一下在 Keras、Pytorch 下使用 word embedding：
 <br>In Keras:
 ```python
->>>import numpy as np
->>>from keras.models import Sequential
->>>from keras.layers import Embedding
+>>> import numpy as np
+>>> from keras.models import Sequential
+>>> from keras.layers import Embedding
 
 >>> input_array = np.array([1, 3, 5, 1])
 >>> model = Sequential() # Build the model
