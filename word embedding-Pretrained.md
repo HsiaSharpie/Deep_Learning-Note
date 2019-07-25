@@ -7,7 +7,7 @@
 <br>Embedding layer是透過給定的維度生成random vector，並從我們輸入的integer對應到相應的dense vector，
 而後續該如何更新Word representation，就是由data、target-test、model等因素去決定。
 
-此篇主要是紀錄如何在Keras、Pytorch中使用Pretrained Word Embedding。
+此篇主要是紀錄如何使用Pretrained Word Embedding。
 ```bash
 Pretrained word embedding是由NLP開發團隊事先由Google News、Wiki等資源對許多字預先進行訓練而成，
 而這些預訓練資料幾乎是公開免費的。
