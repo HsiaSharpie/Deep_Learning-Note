@@ -14,7 +14,9 @@
 [Word embedding](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word%20embedding.md),
 [Word embedding-Pretrained]()
 
-
+------------------------------------------------------------------------------
 Reference:
 * Deep Learning with Python - Francois Chollet(2017)
 * Natural Language Processing with Pytorch - Delip Rao， Brian McMahan(2019)
+* 台大-陳縕儂老師課程 [NTU CSIE ADL](https://www.youtube.com/playlist?list=PLOAQYZPRn2V7ZDNiCrrGAr1JVO3DssOkX)
+* 台大-李宏毅老師課程 [Machine Learning](https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49)

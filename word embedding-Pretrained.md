@@ -43,7 +43,7 @@ word_to_index, word_vectors = embeddings_files('glove.6B.100d.txt')
 ```
 
 由以上一個簡短的function，我們就分別取出word和其對應的embedding。
-<br>接著，可以架構一個簡單的物件去取用裡面的值。
+<br>接著，可以架構一個簡單的Class去取用裡面的資訊。
 ```python
 class Pretrained_Embedding(object):
     def __init__(self, word_to_index, word_vectors):
@@ -67,4 +67,13 @@ class Pretrained_Embedding(object):
  '-0.09142',
  ...
  ...]
+```
+
+```bash
+在 Word Embedding 中其實有許多非常有趣且特別的資訊:
+-> word vector間之幾何關係，經常隱含著他們的語意關係(semantic relationship)。
+
+若將word vector投影到低維(ex:2維)，相對於大象，貓跟老虎投影後的點'可能'更近。因為兩者皆為貓科動物。
+而之所以說是'可能'，是因為隨著不同的'target task'所訓練出之 word embedding會有所不同，
+想當然，也會有不同之語意關係(semantic relationship)。
 ```
