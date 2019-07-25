@@ -32,20 +32,35 @@ Word Embedding 之使用主要可分為：
 (1) Learn by target-test:
 
 此種方法是根據你當初建構 Network 時為了解決的問題(ex: Sentimental Analysis, Seq2Seq...)去學習參數，在深度學習框架中，都提供很方便的 API 可以幫我們完成 word embedding。
-<br>這邊示範一下在 Keras、Pytorch 下使用 word embedding：
+
+```bash
+假設我們現在想表達一個簡短的句子:"I love deep learning"
+且假設在 Corpus 中，共有100個相異的單字。
+故我們可以建構一個簡單的 word_to_index dictionary。
+大略可表示成：
+{
+  "I":1,
+  "am":2,
+  "love":3,
+  .....
+}
+其中，'I love deep learning'四字分別被對應到[1, 3, 5, 7]之value。
+接著，我們可將各個字由 index 藉由 word embedding weight matrix 進行轉換。
+```
+這邊示範一下在 Keras、Pytorch 下使用 word embedding：
 <br>In Keras:
 ```python
 >>> import numpy as np
 >>> from keras.models import Sequential
 >>> from keras.layers import Embedding
 
->>> input_array = np.array([1, 3, 5, 1])
+>>> input_array = np.array([1, 3, 5, 9])
 >>> model = Sequential() # Build the model
 >>> model.add(Embedding(input_dim=100, output_dim=5)) # Add the Embedding layer
 >>> model.predict(input_array)
 
-array([[[-0.01743357, -0.04461786]],
-       [[-0.02894429,  0.03986393]],
-       [[ 0.01214217,  0.04673683]],
-       [[-0.01743357, -0.04461786]]], dtype=float32)
+array([[[-0.04232415,  0.04877395]],
+       [[-0.04796009,  0.04976574]],
+       [[ 0.04478942,  0.00876119]],
+       [[ 0.01540852, -0.03079422]]], dtype=float32)
 ```
