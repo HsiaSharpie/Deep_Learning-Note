@@ -68,7 +68,7 @@ array([[[ 0.00102774, -0.00858252, -0.01779232,  0.01967026, -0.0355065]],
 ```bash
 Arguments:
 (1)input_dim: 此為 Corpus 中單字的數量，即為 vocab_size。
-(2)output_dim: 此為你設定的 embedding dimension，即你想用幾維度去有效表達 word。
+(2)output_dim: 此為你設定的 embedding dimension，即你想用幾維度去有效表達word。
 
 由此例，因我們的Corpus共有100個相異單字，故設定input_dim = 100。
 Note:
@@ -78,6 +78,13 @@ Note:
 output size == (1, 4, 5)
 分別的意義：
 1 -> 共有一個row(我們只有一句話'I love deep learning')
-2 -> 一個row中，透過embedding weights 轉換的字數(len([1, 3, 5, 9] -> 4))
-3 -> 5即為 embedding dimension
+4 -> 一個row中，透過embedding weights 轉換的字數(len([1, 3, 5, 9] == 4))
+5 -> 即為 embedding dimension
+
+Note:
+* 還有另一個經常被使用的參數為: input_length，其實他也相當直覺，即為你input中每一個row的長度。
+  假設我將 Embedding 設定為 Embedding(input_dim=100, output_dim=5, input_length=7)，
+  因len([1, 3, 5, 9]) == 4 而會導致 ValueError。
+
+* 在此皆是以'numpy.ndarray'物件作為 Keras model的input。
 ```
