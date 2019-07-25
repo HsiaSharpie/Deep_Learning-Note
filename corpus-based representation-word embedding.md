@@ -13,8 +13,8 @@ Review:
 
 基本想法：
 ```bash
-透過 Network，我們可以直接從資料中學出 word representation，而此word representation是一個相對較低維度的vector，
-能對 word 有效表達。
+透過 Network，我們可以直接從資料中學出 word representation，而此representation是一個相對較低維度的vector，
+能對有效表達此word。
 ```
 
 Word Embedding ?
@@ -22,3 +22,8 @@ Word Embedding ?
 此類型方法之所以稱為 word embedding，是因為我們會在Vector space(Embedding space，ex: 300維)尋找一個點，
 而此點就代表了這個 word， 即把 word 嵌(embedded)在此space上。
 ```
+
+Word Embedding 之使用主要可分為：
+1. 由設定隨機之向量(矩陣)出發，並根據 target-test 不段更新參數而學得對應之word embedding。
+2. 使用 Pretrained word embedding，此 word embedding 則相對來說較為通用(generic)。
+3. 結合 1&2 之概念，在初始即使用 Pretrained 者，同樣地根據 target-test 去更新參數，此稱作 fine-tuning。
