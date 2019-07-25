@@ -1,6 +1,5 @@
 # Deep_Learning-Practice
-學習 Deep-Learning 過程的簡易筆記。
-此筆記參考許多網路資源&書籍，來源列在下處。
+學習 Deep-Learning 過程的簡易筆記，此筆記參考許多網路資源&書籍，來源列在下處。
 
 1. CNN:
 <br>(1) LeNet: [Keras](https://github.com/HsiaSharpie/Deep_Learning-Practice/tree/master/LeNet_Keras), [Pytorch](https://github.com/HsiaSharpie/Deep_Learning-Practice/tree/master/LeNet_Pytorch)
@@ -12,7 +11,7 @@
 <br>(2) Word Embedding:
 <br>Note:
 [Word embedding](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word%20embedding.md),
-[Word embedding-Pretrained]()
+[Word embedding-Pretrained](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word%20embedding-Pretrained.md)
 
 ------------------------------------------------------------------------------
 Reference:
