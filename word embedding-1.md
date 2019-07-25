@@ -66,6 +66,8 @@ array([[[ 0.00102774, -0.00858252, -0.01779232,  0.01967026, -0.0355065]],
 ```
 
 ```bash
+稍微紀錄一下上面的結果：
+
 Arguments:
 (1)input_dim: 此為 Corpus 中單字的數量，即為 vocab_size。
 (2)output_dim: 此為你設定的 embedding dimension，即你想用幾維度去有效表達word。
@@ -78,7 +80,7 @@ Note:
 output size == (1, 4, 5)
 分別的意義：
 1 -> 共有一個row(我們只有一句話'I love deep learning')
-4 -> 一個row中，透過embedding weights 轉換的字數(len([1, 3, 5, 9] == 4))
+4 -> 一個row中，透過embedding weights轉換的字數(len([1, 3, 5, 9]) == 4)
 5 -> 即為 embedding dimension
 
 Note:
