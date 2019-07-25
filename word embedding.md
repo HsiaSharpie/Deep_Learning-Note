@@ -84,9 +84,32 @@ output size == (1, 4, 5)
 5 -> 即為 embedding dimension
 
 Note:
-* 還有另一個經常被使用的參數為: input_length，其實他也相當直覺，即為你input中每一個row的長度。
+* 還有另一個經常被使用的參數為: input_length，其實他相當直覺，即為你input中每一個row的長度。
+  故經常會將 array 在作為 input前，由keras.preprocessing 中的 sequence.pad_sequences 先進行預處理。
+
   假設我將 Embedding 設定為 Embedding(input_dim=100, output_dim=5, input_length=7)，
   因len([1, 3, 5, 9]) == 4 而會導致 ValueError。
 
 * 在此皆是以'numpy.ndarray'物件作為 Keras model的input。
+```
+
+In Pytorch:
+```python
+>>> import torch
+>>> import torch.nn as nn
+
+>>> embedding = nn.Embedding(100, 5)
+>>> input_torch = torch.tensor([[1, 3, 5, 7]])
+>>> embedding(input_torch)
+
+tensor([[[-0.6092, -0.9798, -1.6091, -0.7121,  0.3037],
+         [ 0.4676, -0.6970, -1.1608,  0.6995,  0.1991],
+         [-0.1759, -2.2456, -1.4465,  0.0612, -0.6177],
+         [-0.7735,  0.1991,  0.0457,  0.1530, -0.4757]]],
+         grad_fn=<EmbeddingBackward>)
+```
+
+```bash
+在這邊也用了與 Keras 中一樣的範例。
+僅有一個特別要注意的是:在 Pytorch 中是以 tensor 作為運算，但其概念跟 ndarray 其實非常像。
 ```
