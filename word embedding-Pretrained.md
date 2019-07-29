@@ -1,7 +1,7 @@
 前一篇大略提到 `Word Embedding`的概念，並以Keras、Pytorch的API實作它。
 ```bash
-我們可把 Embedding layer 想像成一個 dictionary，(在Keras、Pytorch中)它能夠將 integer map到低維度的dense vector，
-故Embedding matrix也被稱為Lookup table。
+我們可把 Embedding layer 想像成一個 dictionary，(在Keras、Pytorch中)它能夠將integer
+map到相對於one-hot representation相對較低維度的dense vector，故Embedding matrix也被稱為Lookup table。
 ```
 在前篇是討論第一種類型的Word Embedding:
 <br>Embedding layer是透過給定的維度，利用Xavie、Kaiming initialization生成vector，並由我們輸入的integer對應到相應的dense vector，
