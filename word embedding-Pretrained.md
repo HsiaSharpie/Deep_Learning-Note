@@ -75,7 +75,11 @@ word vector間之幾何關係，經常隱含著他們的語意關係(semantic re
 ```
 
 ```bash
-若將word vector投影到低維(ex:2維)，相對於大象，因為兩者貓跟老虎皆為貓科動物，投影後的點'可能'更近，。
+(1)若將word vector投影到低維(ex:2維)，相對於大象，因為兩者貓跟老虎皆為貓科動物，投影後的點'可能'更近。
+(2)我們也可透過向量的加減運算求出未知向量，最有名的莫過於：king(vector) + female(vector) -> queen(vector)。
+
 而之所以說是'可能'，是因為隨著不同的'target task'所訓練出之 word embedding會有所不同，
 想當然，也會有不同之語意關係(semantic relationship)。
+
+後續，再記錄一些使用`Pretrained Word Embedding`的練習。
 ```
