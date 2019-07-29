@@ -12,6 +12,9 @@
 <br>Note:
 [Word embedding](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word%20embedding.md),
 [Word embedding-Pretrained](https://github.com/HsiaSharpie/Deep_Learning-Practice/blob/master/word%20embedding-Pretrained.md)
+<br>(3) RNN:
+<br>Note:
+[Vanilla RNN]()
 
 ------------------------------------------------------------------------------
 Reference:
