@@ -1,4 +1,4 @@
-# Deep_Learning-Practice
+# Deep_Learning-Note
 學習 Deep-Learning 過程的簡易筆記，此筆記參考許多網路資源&書籍，來源列在下處。
 
 1. CNN:
