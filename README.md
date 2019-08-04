@@ -1,7 +1,7 @@
 # Deep_Learning-Note
 學習 Deep-Learning 過程的簡易筆記，此筆記參考許多網路資源&書籍，來源列在下處。
 
-1. NLP:
+* NLP:
 
 (1) Word Representation:
 <br>Note:
@@ -19,6 +19,7 @@
 [GRU]()
 
 (4) Torchtext:
+<br>Note:
 [Torchtext](https://github.com/HsiaSharpie/Deep_Learning-Note/blob/master/torchtext.md)
 
 ------------------------------------------------------------------------------
