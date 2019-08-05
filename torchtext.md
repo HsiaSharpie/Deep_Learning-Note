@@ -4,8 +4,8 @@
 它能為使用Pytorch做NLP的使用者省去不少預處理的時間也提供一些dataset供我們實作。
 
 下面會稍微簡單地介紹他的方便性跟使用方式，分別拆成三部分:
-1. tokenize
-2. vocabulary
+1. Tokenize
+2. Vocabulary
 3. Batch
 ```
 ------------------------------------------------------------------------------
@@ -14,15 +14,17 @@
 1. Field、LabelField:
 <br>Torchtext的基本概念是建構在`Field`、`LabelField`這兩個class中。透過`Field`、`LabelField`的建構，我們能清楚定義出該如何處理文字，並透過實例化去完成。
 ```python
-TEXT = data.Field(tokenize = 'spacy')
-LABEL = data.LabelField(dtype = torch.float)
+TEXT = data.Field(tokenize='spacy')
+LABEL = data.LabelField(dtype=torch.float)
 ```
 
 ```bash
 上面是一個非常簡單使用'Field class'去建構實例的方式。
-在Field中，包含許多arguments可進行設定，在此例僅對tokenize進行設定。
+在Field中，有許多arguments可進行設定，在此例僅對tokenize進行設定。
 tokenize即為分詞(斷詞)，即為如何將將一堆string劃分成'tokens'的方式。
 若沒有額外設定，torchtext之default是根據空格進行切分。
+
+Note:
 這邊的使用的'spacy'，其實也是在python中對'NLP'提供很多好用功能的library，在此能與'torchtext'完美搭配，
 除了tokenize之外，spacy提供字詞中許多與語言學、ML相關的資訊。
 ```
@@ -51,8 +53,8 @@ train_data, test_data = datasets.IMDB.splits(TEXT, LABEL)
 {'text': ['elvira', 'mistress', 'of', 'the', 'dark', 'is', 'one', 'of', 'my', 'fav', 'movies', ',', 'it', 'has', 'every', 'thing', 'you', 'would', 'want', 'in', 'a', 'film', ',', 'like', 'great', 'one', 'liners', ',', 'sexy', 'star', 'and', 'a', 'Outrageous', 'story', '!', 'if', 'you', 'have', 'not', 'seen', 'it', ',', 'you', 'are', 'missing', 'out', 'on', 'one', 'of', 'the', 'greatest', 'films', 'made', '.', 'i', 'ca', "n't", 'wait', 'till', 'her', 'new', 'movie', 'comes', 'out', '!'], 'label': 'pos'}
 
 以上就會產生一個dictionary，而裡面分別有text與label兩個key。
-text對應之value: TEXT -> tokenize後的結果，以陣列形式呈現。
-label對應之value: LABEL -> 'pos' or 'neg'。
+text對應之value: tokenize後的結果，以陣列形式呈現。
+label對應之value: 'pos' or 'neg'。
 ```
 
 3. 其餘幾個重要arguments:
@@ -61,7 +63,7 @@ label對應之value: LABEL -> 'pos' or 'neg'。
 就如同argument的字面意義，我們打算將後續切割的各個batch設定為多長的固定長度(length)？
 這個參數其實相當重要，我們在餵batch給model時希望各個batch的大小是相同的。
 Ex:
-TEXT = data.Field(tokenize = 'spacy', fix_length=20)
+TEXT = data.Field(tokenize='spacy', fix_length=20)
 則此時，若seq_length小於20就補齊，反之則將超過20的部分刪除。
 
 
@@ -76,6 +78,7 @@ By default，它會將缺失的部分以'<pad>'補上，但經常我們也會用
 若設定為True時，當我們使用batch.text印出結果，他會是個tuple。
 第一個element: padding過後的句子。
 第二個element: 原實際句子的長度。
+> (padding過後的句子, 原實際句子的長度)
 
 * 其實還有超多很方便的arguments，而且參數的設定相當直覺:
 ex:
@@ -97,13 +100,14 @@ tokenizer_language: 斷詞的語言，預設即為英文('en')。
 2. 各個vector彼此間為相互獨立。
 
 後續我們會以Embedding的方式，將字詞轉換至相對低維度空間稠密進行表示。
-除此之外，我們可將tokenize後的vocab'取部分納入訓練'。
+除此之外，'我們可將tokenize後的vocab取部分納入訓練'。
 基本上也分為兩種:
 1. 出現次數少於幾次之字詞，則刪除。
 2. 取maximum vocabulary size。
 ```
 
 ```bash
+Example:
 這邊使用第二種，取maximum vocabulary size的方式:
 max_size = 20000
 
@@ -137,7 +141,7 @@ dict_keys(['freqs', 'itos', 'unk_index', 'stoi', 'vectors'])
 ```
 
 ```bash
-他是一個非常強大的'Iterator'，在arguments給定後，他能夠在每個迭代回傳相同長度的batch，
+他是一個非常強大的'Iterator'，在arguments給定後，他能夠在每個迭代回傳相同size的batch，
 並在每次回傳時極小化必須要padding的數目。
 
 Note:
@@ -156,5 +160,7 @@ train_iterator, valid_iterator, test_iterator = data.BucketIterator.splits(
     device = device)
 ```
 ------------------------------------------------------------------------------
-Torchtext這個很優的library就先暫時紀錄至此，我會再紀錄一篇如何搭配上Pytorch架構的模型，
-<br>若後續在Torchtext使用上有更新更不錯的用途我會再繼續紀錄的！
+Torchtext這個很優的library就先暫時紀錄至此，我會再紀錄一篇如何搭配上Pytorch架構後的模型，
+<br>若後續在Torchtext使用上有更新更不錯的用途我會再繼續寫上的！
+<br>註:此篇的紀錄幾乎參考自此Tutorial:[bentrevett/pytorch-sentiment-analysis](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/1%20-%20Simple%20Sentiment%20Analysis.ipynb)
+<br>此作者不管是sentiment-analysis tutorial或是seq2seq tutorial都寫得非常棒。
