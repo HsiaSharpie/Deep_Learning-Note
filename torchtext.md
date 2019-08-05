@@ -23,14 +23,13 @@ tokenize即為分詞(斷詞)，即為如何將將一堆string劃分成'tokens'�
 
 2. 使用定義之Field對資料集之文字進行tokenize
 
-這邊直接使用torchtext提供的IMDB dataset:
 ```python
 from torchtext import datasets
 train_data, test_data = datasets.IMDB.splits(TEXT, LABEL)
 ```
 
 ```bash
-我們可以直接從'torchtext'中導入它所提供的datasets，並直接用其'splits method'將他劃分成訓練及測試集。
+這邊直接使用torchtext提供的IMDB dataset，我們可以直接從'torchtext'中導入，並直接用其'splits method'將他劃分成訓練及測試集。
 雖然平常在實作時，我們還會需要個validationset，但只要在額外從testset切分出來即可！
 
 在'splits method'中我們要丟入的arguments即為上述在'Field','LabelField'所初始化的實例。
@@ -46,12 +45,24 @@ Ex:
 TEXT = data.Field(tokenize = 'spacy', fix_length=20)
 則此時，若seq_length小於20就補齊，反之則將超過20的部分刪除。
 
+
 * pad_token:
 此argument可搭配著前面的fix_length一起使用，在seq_length小於fix_length時，
 我們需要把seq_length補成相同長度。
 By default，它會將缺失的部分以'<pad>'補上，但經常我們也會用0補上(0-padding)。
 
-* 
 
+* include_lengths:
+此argument為一boolean。
+若設定為True時，當我們使用batch.text印出結果，他會是個tuple。
+第一個element: padding過後的句子。
+第二個element: 原實際句子的長度。
 
+* 其實還有超多很方便的arguments，而且參數的設定相當直覺:
+ex:
+sequential: 是否屬於序列文字。
+lower: 是否轉換為皆是小寫。
+unk_token: 未知字的表達。
+stop_words: 是否除去常用字，ex:the, is, am....
+tokenizer_language: 斷詞的語言，預設即為英文('en')。
 ```
