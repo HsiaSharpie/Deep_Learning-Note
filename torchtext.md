@@ -163,4 +163,4 @@ train_iterator, valid_iterator, test_iterator = data.BucketIterator.splits(
 Torchtext這個很優的library就先暫時紀錄至此，我會再紀錄一篇如何搭配上Pytorch架構後的模型，
 <br>若後續在Torchtext使用上有更新更不錯的用途我會再繼續寫上的！
 <br>註:此篇的紀錄幾乎參考自此Tutorial:[bentrevett/pytorch-sentiment-analysis](https://github.com/bentrevett/pytorch-sentiment-analysis/blob/master/1%20-%20Simple%20Sentiment%20Analysis.ipynb)
-<br>此作者不管是sentiment-analysis tutorial或是seq2seq tutorial都寫得非常棒。
+<br>此作者不管是sentiment-analysis tutorial或是seq2seq tutorial都寫得非常棒，有興趣的可參考參考。
