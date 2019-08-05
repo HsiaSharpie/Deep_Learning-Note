@@ -14,15 +14,44 @@ TEXT = data.Field(tokenize = 'spacy')
 LABEL = data.LabelField(dtype = torch.float)
 ```
 
-上面是一個非常簡單使用`Field class`去建構實例的方式。
-<br>在Field中，包含許多arguments可進行設定，在此例僅對tokenize進行設定。
-<br>tokenize即為分詞(斷詞)，即為如何將將一堆string劃分成`tokens`的方式。若沒有額外設定，torchtext之default是根據空格進行切分。
-<br>這邊的使用的`spacy`，其實也是在python中對`NLP`提供很多好用功能的library，除了tokenize之外，spacy提供字詞中許多與語言學、ML相關的資訊。
-
+```bash
+上面是一個非常簡單使用'Field class'去建構實例的方式。
+在Field中，包含許多arguments可進行設定，在此例僅對tokenize進行設定。
+tokenize即為分詞(斷詞)，即為如何將將一堆string劃分成'tokens'的方式。若沒有額外設定，torchtext之default是根據空格進行切分。
+這邊的使用的'spacy'，其實也是在python中對'NLP'提供很多好用功能的library，除了tokenize之外，spacy提供字詞中許多與語言學、ML相關的資訊。
+```
 
 2. 使用定義之Field對資料集之文字進行tokenize
 
 這邊直接使用torchtext提供的IMDB dataset:
 ```python
+from torchtext import datasets
+train_data, test_data = datasets.IMDB.splits(TEXT, LABEL)
+```
+
+```bash
+我們可以直接從'torchtext'中導入它所提供的datasets，並直接用其'splits method'將他劃分成訓練及測試集。
+雖然平常在實作時，我們還會需要個validationset，但只要在額外從testset切分出來即可！
+
+在'splits method'中我們要丟入的arguments即為上述在'Field','LabelField'所初始化的實例。
+如此我們就能夠簡單的透過自訂的tokenize方法，將大量的文字進行簡單的預處理。
+```
+
+3. 其餘幾個重要arguments
+```bash
+* fix_length:
+就如同argument的字面意義，我們打算將後續切割的各個batch設定為多長的固定長度(length)？
+這個參數其實相當重要，我們在batch更新參數時都希望各個batch的大小是相同的。
+Ex:
+TEXT = data.Field(tokenize = 'spacy', fix_length=20)
+則此時，若seq_length小於20就補齊，反之則將超過20的部分刪除。
+
+* pad_token:
+此argument可搭配著前面的fix_length一起使用，在seq_length小於fix_length時，
+我們需要把seq_length補成相同長度。
+By default，它會將缺失的部分以'<pad>'補上，但經常我們也會用0補上(0-padding)。
+
+* 
+
 
 ```
